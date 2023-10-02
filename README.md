@@ -13,10 +13,6 @@ demo backend in go for nodo.xyz
 
 `make get`
 
-## To run :
-
-`make run`
-
 ## To regenerate swagger docs :
 
 `make docs`
@@ -39,7 +35,9 @@ First start the database in docker by calling :
 
 ### The database will be seeded with the data in `stock.sql` file
 
-`make docker`
+## To run the api :
+
+`make run`
 
 ## To run tests :
 

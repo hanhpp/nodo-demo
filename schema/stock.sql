@@ -1,5 +1,5 @@
 -- Create the stock table
-CREATE TABLE stock (
+CREATE TABLE stocks (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     current_price DECIMAL(10, 2),
@@ -7,7 +7,7 @@ CREATE TABLE stock (
 );
 
 -- Insert sample data
-INSERT INTO stock (id,name, current_price, last_update)
+INSERT INTO stocks (id,name, current_price, last_update)
 VALUES
     (1,'Apple', 100.50, NOW()),
     (2,'Microsoft', 75.25, NOW()),
