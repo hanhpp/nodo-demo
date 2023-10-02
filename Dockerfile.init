@@ -1,0 +1,5 @@
+# Use an official PostgreSQL image as a parent image
+FROM postgres:latest
+
+# Copy the SQL schema file into the Docker container
+COPY schema/stock.sql /docker-entrypoint-initdb.d/

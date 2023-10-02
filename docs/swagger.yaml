@@ -1,0 +1,190 @@
+basePath: /api
+definitions:
+  repo.Stock:
+    properties:
+      currentPrice:
+        type: number
+      id:
+        type: integer
+      lastUpdate:
+        type: string
+      name:
+        type: string
+    type: object
+  util.ErrorResponse:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+    type: object
+  util.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a sample stock API.
+  title: Stock API
+  version: "1"
+paths:
+  /api/stocks:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a list of stocks with pagination.
+      parameters:
+      - description: Page number (default is 1)
+        in: query
+        name: page
+        type: integer
+      - description: Number of stocks per page (default is 10)
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/repo.Stock'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/util.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/util.ErrorResponse'
+      summary: Get a list of stocks
+    post:
+      consumes:
+      - application/json
+      description: Creates a new stock.
+      parameters:
+      - description: Stock object to create
+        in: body
+        name: stock
+        required: true
+        schema:
+          $ref: '#/definitions/repo.Stock'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/repo.Stock'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/util.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/util.ErrorResponse'
+      summary: Create a new stock
+  /api/stocks/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a single stock by its ID.
+      parameters:
+      - description: Stock ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/util.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/util.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/util.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/util.ErrorResponse'
+      summary: Delete a stock by ID
+    get:
+      consumes:
+      - application/json
+      description: Retrieves a single stock by its ID.
+      parameters:
+      - description: Stock ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/repo.Stock'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/util.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/util.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/util.ErrorResponse'
+      summary: Get a stock by ID
+    patch:
+      consumes:
+      - application/json
+      description: Updates the price of a single stock.
+      parameters:
+      - description: Stock ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated Stock object
+        in: body
+        name: updatedStock
+        required: true
+        schema:
+          $ref: '#/definitions/repo.Stock'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/repo.Stock'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/util.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/util.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/util.ErrorResponse'
+      summary: Update a stock's price
+swagger: "2.0"
