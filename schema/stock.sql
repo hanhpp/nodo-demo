@@ -7,8 +7,9 @@ CREATE TABLE stock (
 );
 
 -- Insert sample data
-INSERT INTO stock (name, current_price, last_update)
+INSERT INTO stock (id,name, current_price, last_update)
 VALUES
-    ('Stock 1', 100.50, NOW()),
-    ('Stock 2', 75.25, NOW()),
-    ('Stock 3', 50.75, NOW());
+    (1,'Apple', 100.50, NOW()),
+    (2,'Microsoft', 75.25, NOW()),
+    (3,'Samsung', 50.75, NOW());
+

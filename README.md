@@ -30,6 +30,13 @@ Image :
 
 ## To run docker :
 
+First start the database in docker by calling :
+`make docker`
+
+## Then run the migration file by calling :
+
+`make migrate`
+
 ### The database will be seeded with the data in `stock.sql` file
 
 `make docker`

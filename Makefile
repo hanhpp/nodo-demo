@@ -5,9 +5,9 @@ get:
 
 .PHONY: docker
 docker:
-	docker compose -f ./docker-compose.yml up -d
-test:
-	go test -v ./...
+	docker compose -f ./docker/docker-compose.yml -p demo-db up -d
+docker-down:
+	docker compose -f ./docker/docker-compose.yml -p demo-db down
 fmt:
 	go fmt ./...
 .PHONY: docs
@@ -16,3 +16,9 @@ docs:
 .PHONY: test
 test:
 	go test -v ./...
+api:
+	docker compose -f ./docker/api.yml up -d
+.PHONY: migrate
+migrate:
+	chmod +x ./script/migrate.sh
+	./script/migrate.sh
