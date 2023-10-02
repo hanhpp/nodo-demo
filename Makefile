@@ -10,8 +10,8 @@ test:
 	go test -v ./...
 fmt:
 	go fmt ./...
-.PHONY: doc
-doc:
+.PHONY: docs
+docs:
 	swag init -g ./api-portal/routes/stock_handler/stock.go -o ./docs
 .PHONY: test
 test:

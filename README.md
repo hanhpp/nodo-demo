@@ -19,7 +19,7 @@ demo backend in go for nodo.xyz
 
 ## To regenerate swagger docs :
 
-`make doc`
+`make docs`
 
 ### swagger docs sit at url :
 

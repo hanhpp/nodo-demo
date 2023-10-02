@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
 	"stock-api/api-portal/routes/health_handler"
 	"stock-api/api-portal/routes/stock_handler"
 	"stock-api/global"
@@ -14,6 +15,7 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	// gin-swagger middleware
+	_ "stock-api/docs"
 )
 
 func Init() {

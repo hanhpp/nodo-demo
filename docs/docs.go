@@ -15,7 +15,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/api/stocks": {
+        "/stocks": {
             "get": {
                 "description": "Retrieves a list of stocks with pagination.",
                 "consumes": [
@@ -105,7 +105,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/stocks/{id}": {
+        "/stocks/{id}": {
             "get": {
                 "description": "Retrieves a single stock by its ID.",
                 "consumes": [

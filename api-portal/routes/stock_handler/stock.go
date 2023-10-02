@@ -2,9 +2,10 @@ package stock_handler
 
 import (
 	"net/http"
+	"strconv"
+
 	"stock-api/repo"
 	"stock-api/util"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -24,7 +25,7 @@ import (
 // @Success 200 {array} repo.Stock
 // @Failure 400 {object} util.ErrorResponse
 // @Failure 500 {object} util.ErrorResponse
-// @Router /api/stocks [get]
+// @Router /stocks [get]
 func GetStocks(c *gin.Context) {
 	// Get query parameters for pagination
 	page := c.DefaultQuery("page", "1")
@@ -61,7 +62,7 @@ func GetStocks(c *gin.Context) {
 // @Success 201 {object} repo.Stock
 // @Failure 400 {object} util.ErrorResponse
 // @Failure 500 {object} util.ErrorResponse
-// @Router /api/stocks [post]
+// @Router /stocks [post]
 func CreateStock(c *gin.Context) {
 	var stock repo.Stock
 	if err := c.ShouldBindJSON(&stock); err != nil {
@@ -86,7 +87,7 @@ func CreateStock(c *gin.Context) {
 // @Failure 400 {object} util.ErrorResponse
 // @Failure 404 {object} util.ErrorResponse
 // @Failure 500 {object} util.ErrorResponse
-// @Router /api/stocks/{id} [get]
+// @Router /stocks/{id} [get]
 func GetStockByID(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
@@ -113,7 +114,7 @@ func GetStockByID(c *gin.Context) {
 // @Failure 400 {object} util.ErrorResponse
 // @Failure 404 {object} util.ErrorResponse
 // @Failure 500 {object} util.ErrorResponse
-// @Router /api/stocks/{id} [patch]
+// @Router /stocks/{id} [patch]
 func UpdateStock(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
@@ -153,7 +154,7 @@ func UpdateStock(c *gin.Context) {
 // @Failure 400 {object} util.ErrorResponse
 // @Failure 404 {object} util.ErrorResponse
 // @Failure 500 {object} util.ErrorResponse
-// @Router /api/stocks/{id} [delete]
+// @Router /stocks/{id} [delete]
 func DeleteStock(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {

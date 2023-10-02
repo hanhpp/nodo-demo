@@ -31,7 +31,7 @@ info:
   title: Stock API
   version: "1"
 paths:
-  /api/stocks:
+  /stocks:
     get:
       consumes:
       - application/json
@@ -90,7 +90,7 @@ paths:
           schema:
             $ref: '#/definitions/util.ErrorResponse'
       summary: Create a new stock
-  /api/stocks/{id}:
+  /stocks/{id}:
     delete:
       consumes:
       - application/json
