@@ -25,6 +25,9 @@ demo backend in go for nodo.xyz
 
 [http://localhost:8080/docs/index.html](http://localhost:8080/docs/index.html)
 
+Image :
+![img](./static/swaggo.png "swaggo docs")
+
 ## To run docker :
 
 ### The database will be seeded with the data in `stock.sql` file
@@ -34,3 +37,6 @@ demo backend in go for nodo.xyz
 ## To run tests :
 
 `make test`
+
+Result :
+![img](./static/test_result.png "test result")
