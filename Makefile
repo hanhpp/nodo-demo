@@ -13,3 +13,5 @@ fmt:
 .PHONY: doc
 doc:
 	swag init -g ./api-portal/routes/stock_handler/stock.go -o ./docs
+test:
+	go test -v ./...

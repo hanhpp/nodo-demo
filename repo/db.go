@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"log"
 	"net/url"
+	"sync"
+
 	"stock-api/global"
 	"stock-api/util"
-	"sync"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -27,7 +28,7 @@ type Database struct {
 	db   *gorm.DB
 }
 
-// Db returns the gorm db connection.
+// Db returns the gorm Db connection.
 func (d *Database) Db() *gorm.DB {
 	d.once.Do(d.Connect)
 
@@ -42,10 +43,10 @@ func (d *Database) SetDB(db *gorm.DB) {
 	d.db = db
 }
 
-// Connect creates a new gorm db connection.
+// Connect creates a new gorm Db connection.
 func (d *Database) Connect() {
 	if d == nil {
-		log.Fatal("db is nil")
+		log.Fatal("Db is nil")
 	}
 
 	ourDB, err := gorm.Open(postgres.Open(d.GetDns()), &gorm.Config{
@@ -61,7 +62,7 @@ func (d *Database) Connect() {
 	d.SetDB(ourDB)
 }
 
-// Close closes the gorm db connection.
+// Close closes the gorm Db connection.
 func (g *Database) Close() {
 	if g.db != nil {
 		dbInstance, _ := g.db.DB()
@@ -85,7 +86,7 @@ func (db *Database) GetDns() string {
 	)
 }
 
-// Setup set up our db with configs from env
+// Setup set up our Db with configs from env
 func (db *Database) Setup(conf *global.VecConfig) {
 	if conf == nil {
 		log.Fatal("config is nil")
@@ -120,11 +121,11 @@ func dnsProcess(str string) string {
 func Init() {
 
 	// get configs from env
-	// set configs to db
+	// set configs to Db
 	config := global.Config
 	// fmt.Printf("%+v\n", config)
 	DB.Setup(config)
-	// connect to db
+	// connect to Db
 	DB.Connect()
 
 	// Init repositories

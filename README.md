@@ -23,4 +23,10 @@ demo backend in go for nodo.xyz
 
 ## To run docker :
 
+### The database will be seeded with the data in `stock.sql` file
+
 `make docker`
+
+## To run tests :
+
+`make test`
