@@ -17,6 +17,15 @@ type StockRepo struct {
 	Db *Database
 }
 
+type StockRepository interface {
+	CreateStock(stock *Stock) error
+	GetStocks() ([]Stock, error)
+	GetStockByID(id uint) (*Stock, error)
+	UpdateStock(stock *Stock) error
+	DeleteStock(id uint) error
+	GetPaginatedStocks(page, pageSize int) ([]Stock, error)
+}
+
 // NewStockRepository initializes a new StockRepository with a GORM instance.
 func NewStockRepo(db *Database) *StockRepo {
 	return &StockRepo{db}

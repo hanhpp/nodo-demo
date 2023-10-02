@@ -21,6 +21,10 @@ demo backend in go for nodo.xyz
 
 `make doc`
 
+### swagger docs sit at url :
+
+[http://localhost:8080/docs/index.html](http://localhost:8080/docs/index.html)
+
 ## To run docker :
 
 ### The database will be seeded with the data in `stock.sql` file
